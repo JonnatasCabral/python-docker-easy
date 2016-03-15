@@ -7,11 +7,11 @@ EXPOSE 8000
 # set work directory
 WORKDIR /current
 
+# if you need publish your ssh key for install any requirements put
+# ADD  ../../.ssh/id_rsa /root/.ssh/id_rsa
+
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-
-# if you need public you ssh key for install any requirements put
-#ADD  ../../.ssh/id_rsa /root/.ssh/id_rsa
 
 # put current project on workdir of my container
 COPY . /current
