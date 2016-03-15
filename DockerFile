@@ -1,0 +1,20 @@
+FROM python:2.7
+
+MAINTAINER Jonnatas Matias <matiasjonnatas@gmail.com>
+
+EXPOSE 8000
+
+# set work directory
+WORKDIR /current
+
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+# if you need public you ssh key for install any requirements put
+#ADD  ../../.ssh/id_rsa /root/.ssh/id_rsa
+
+# put current project on workdir of my container
+COPY . /current
+
+CMD python manage.py runserver 0.0.0.0:8000
+
